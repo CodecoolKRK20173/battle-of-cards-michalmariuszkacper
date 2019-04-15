@@ -1,5 +1,5 @@
 package com.codecool.battleofcards;
 
-class xmlReader {
+class XmlReader {
     
 }
