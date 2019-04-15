@@ -1,0 +1,11 @@
+src/com/codecool/battleofcards/Ai.java
+src/com/codecool/battleofcards/Card.java
+src/com/codecool/battleofcards/View.java
+src/com/codecool/battleofcards/Player.java
+src/com/codecool/battleofcards/Human.java
+src/com/codecool/battleofcards/Controller.java
+src/com/codecool/battleofcards/Game.java
+src/com/codecool/battleofcards/Pile.java
+src/com/codecool/battleofcards/Main.java
+src/com/codecool/battleofcards/CardDAO.java
+src/com/codecool/battleofcards/XmlReader.java
