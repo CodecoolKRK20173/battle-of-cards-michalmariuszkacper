@@ -17,7 +17,7 @@ class View {
 
     public void displayTypeOfGame() {
         System.out.print("\033[H\033[2J");
-        System.out.println("TYPE OF GAME:\n" + "1. Human vs human [H H]\n" + "2. Human vs Computer [H A]\n" + "3. Back to main menu\n");
+        System.out.println("TYPE OF GAME:\n" + "1. Human vs human\n" + "2. Human vs Computer\n" + "3. Back to main menu\n");
     }
 
     public String getInput(String communique) {
