@@ -4,6 +4,15 @@ package com.codecool.battleofcards;
 class Controller {
     private View view = new View();
     private Game game = new Game();
+    private Deck deck;
+
+    public Controller(CardDao cardDaoInput) {
+        this.deck = cardDaoInput.getDeck();
+    }
+
+    public void printTest() {
+        System.out.println(this.deck);
+    }
     
     
     public void runGame(){
@@ -50,6 +59,4 @@ class Controller {
         }while(view.validateTypeOfGameSelection(typeOfGame));
         
     }
-
-    
 }
