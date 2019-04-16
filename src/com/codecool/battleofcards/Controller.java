@@ -4,15 +4,8 @@ package com.codecool.battleofcards;
 class Controller {
     private View view = new View();
     private Game game = new Game();
-    private Deck deck;
 
-    public Controller(CardDao cardDaoInput) {
-        this.deck = cardDaoInput.getDeck();
-    }
-
-    public void printTest() {
-        System.out.println(this.deck);
-    }
+    
     
     
     public void runGame(){
@@ -44,18 +37,7 @@ class Controller {
             view.displayMessage(view.validateTypeOfGameSelection(typeOfGame));
             
             typeOfGame = view.getInput("Type of game: ");
-            switch (typeOfGame) {
-                case "1":
-
-                    game.createPlayers();
-                    break;
-                case "2":
-                    System.out.println("You picked option 2");
-                    break;
-                case "3":
-                    runGame();
-                    break;
-            }
+            game.createPlayers(typeOfGame);
         }while(view.validateTypeOfGameSelection(typeOfGame));
         
     }

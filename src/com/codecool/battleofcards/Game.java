@@ -16,7 +16,6 @@ class Game {
         switch (types) {
 
         case "H H":
-        default:
             player1 = new Human();
             player2 = new Human();
             break;
@@ -34,7 +33,7 @@ class Game {
         boolean player1Turn = random.nextBoolean();
 
         while (gameOn) {
-            if (player1turn) {
+            if (player1Turn) {
                 player1.chooseStatToPlay();
             } else {
                 player2.chooseStatToPlay();
