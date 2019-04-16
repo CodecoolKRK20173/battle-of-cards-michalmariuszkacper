@@ -4,7 +4,7 @@ package com.codecool.battleofcards;
 class Controller {
     private View view = new View();
     private Game game = new Game();
-
+    
     
     
     

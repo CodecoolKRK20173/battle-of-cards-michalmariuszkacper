@@ -4,7 +4,6 @@ package com.codecool.battleofcards;
 import java.util.Random;
 
 class Game {
-
     private Pile deck = new Pile();
     private Pile table = new Pile();
     private boolean gameOn = true;
@@ -15,14 +14,17 @@ class Game {
 
         switch (types) {
 
-        case "H H":
+        case "1":
             player1 = new Human();
             player2 = new Human();
             break;
 
-        case "H A":
+        case "2":
             player1 = new Human();
             player2 = new Ai();
+            break;
+        case "3":
+            Main.getController().runGame();
             break;
         }
     }

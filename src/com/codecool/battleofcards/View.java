@@ -44,7 +44,7 @@ class View {
     }
 
     public boolean validateTypeOfGameSelection(String typeOfGame) {
-        List<String> selections = new ArrayList<>(Arrays.asList("H H", "H A"));
+        List<String> selections = new ArrayList<>(Arrays.asList("1", "2", "3"));
         if (typeOfGame == "") {
             return false;
         } else if (!selections.contains(typeOfGame.toUpperCase())) {
