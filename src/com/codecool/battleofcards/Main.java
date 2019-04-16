@@ -1,8 +1,10 @@
 package com.codecool.battleofcards;
 
-class Main {
+public class Main {
+
 
     public static void main(String[] args) {
-        
+        Controller controller = new Controller();
+        controller.runGame();
     }
 }
