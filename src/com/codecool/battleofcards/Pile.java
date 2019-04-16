@@ -10,12 +10,12 @@ class Pile {
 
     public Card getTopCard() {
 
-        return pile.get(pile.size() -1);
+        return cards.get(cards.size() -1);
     }
 
     public List<Card> getCards() {
 
-        return pile;
+        return cards;
     }
 
     public void addCard(Card card) {
