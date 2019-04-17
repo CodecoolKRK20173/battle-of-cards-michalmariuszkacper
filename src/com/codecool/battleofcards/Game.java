@@ -1,7 +1,6 @@
 
 package com.codecool.battleofcards;
 
-import java.util.Random;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.lang.InterruptedException;
@@ -28,7 +27,6 @@ class Game {
         for (int index = 0; index < deck.size(); index += 2) {
             player1.addCard(deck.get(index));
             player2.addCard(deck.get(index + 1));
-            System.out.println(deck.get(index + 1));
         }
     }
 
@@ -102,13 +100,33 @@ class Game {
         gameOver(winner);
     }
 
+    private List<String> parseCardForPrint(Card card) {
+
+        List<String> list = new ArrayList<>();
+
+        list.add("Specification");
+        list.add(card.getId().toString());
+        list.add("FirstStat");
+        list.add(card.getFirstStat().toString());
+        list.add("SecondStat");
+        list.add(card.getSecondStat().toString());
+        list.add("ThirdStat");
+        list.add(card.getThirdStat().toString());
+        list.add("FourthStat");
+        list.add(card.getFourthStat().toString());
+        return list;
+    }
+
     private void playRound(Player activePlayer, Player secondPlayer) throws InterruptedException {
 
         moveCardsOnTable(activePlayer, secondPlayer);
         View printer = new View();
+        CardsPrinter cardprinter = new CardsPrinter(parseCardForPrint(activePlayer.getCard()));
         printer.clearScreen();
         printer.print(activePlayer.getName() + "\'s move\n");
-        printer.print(activePlayer.getCard().toString()); // implement proper card printer here
+        cardprinter.prepareToPrint();
+        String str = cardprinter.getOutput();
+        printer.print(str);
         int stat = activePlayer.chooseStatToPlay();
         Boolean didIWin = isYourCardStronger(table.get(table.size() -2), table.get(table.size() -1), stat);
 
@@ -118,10 +136,10 @@ class Game {
             }
             flip = false;
             table.clear();
-            printer.print(activePlayer.getName() + " won this round!");
+            printer.print("\n" + activePlayer.getName() + " won this round!");
             TimeUnit.SECONDS.sleep(2);
         } else if (didIWin == null) {
-            printer.print("It's a draw!");
+            printer.print("\nIt's a draw!");
             TimeUnit.SECONDS.sleep(2);
             flip = false;
         } else {
@@ -130,7 +148,7 @@ class Game {
             }
             flip = true;
             table.clear(); 
-            printer.print(secondPlayer.getName() + " won this round!");
+            printer.print("\n" + secondPlayer.getName() + " won this round!");
             TimeUnit.SECONDS.sleep(2);
         }
     }

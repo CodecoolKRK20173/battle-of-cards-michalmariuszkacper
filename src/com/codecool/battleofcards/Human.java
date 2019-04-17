@@ -13,10 +13,11 @@ class Human extends Player {
 
     public int chooseStatToPlay() {
         
-        return Integer.parseInt(input.getInput("Enter stat: "));
+        return Integer.parseInt(input.getInput("\nEnter stat: "));
     }
 
     public void addCard(Card card) {
+
         getPile().addCardToPile(card);
     }
 }

@@ -1,67 +1,66 @@
+package com.codecool.battleofcards;
+
 import java.util.List;
 import java.util.ArrayList;
 
-/**
- * This class is used to print adjustable table. Table will generate vertical collumns in number
- * corresponding to the number of of objects in headers list which is first parameter taken by constructor.
- * Second parameter is list of lists containing String formated fields user needs printed in a table.
- * The table will adjust fields width to be the length of longest String passed to the constructor.
- * All fields will be centered. Last parameter of constructor of boolean type determines wether
- * user wants to add indexing in first collumn of the table. In such case length of each sublist of 
- * content passed to the constructor should be one field shorter than headers list. Otherwise both
- * lengths should be extacly the same. None of the lists can be empty.
- */
 
-class TablePrinter {
+class CardsPrinter {
 
-    private List<String> headers;
-    private List<List<String>> content;
-    private boolean wantIndex;
-    private Integer[] collumnsWidth;
+
+    private List<String> content;
+    private int collumnsWidth[] = {0,0};
+    private String toPrint;
 
     
-    public TablePrinter(List<String> headers, List<List<String>> content, boolean wantIndex) {
-        this.headers = headers;
+    public CardsPrinter(List<String> content) {
+
         this.content = content;
-        this.wantIndex = wantIndex;
         getCollumnsWidth();
     }
 
-    public void printTable() {
-        checkIfNoProblems();
+    public String getOutput() {
+        return toPrint;
+    }
+
+    public void prepareToPrint() {
+        
         List<String> table = new ArrayList<>();
-        List<List<String>> input = processData();   
         String fieldSeparator = "│";
         String rowSeparator = generateTopMiddleOrBottomLine("rowSeparator");
+        int counter = 0;
 
         table.add(generateTopMiddleOrBottomLine("top"));
-        for (List<String> list : input) {
+        for (String string : content) {
             table.add(fieldSeparator);
-            for (int index = 0; index < list.size(); index ++) {
-                table.add(centerField(list.get(index), collumnsWidth[index]));
+            table.add(centerField(string, collumnsWidth[counter]));
+            counter ++;
+            if (counter == 2) {
                 table.add(fieldSeparator);
+                table.add(rowSeparator);
+                counter = 0;
             }
-            table.add(rowSeparator);
         }
         table.set(table.size() - 1, generateTopMiddleOrBottomLine("bottom"));
-        System.out.println(String.join("", table));
+        toPrint =  String.join("", table);
     }
 
     private void getCollumnsWidth() {
-        List<Integer> collumnsWidth = new ArrayList<>();
-        this.collumnsWidth = new Integer[headers.size()];
 
-        for (String string : headers) {
-            collumnsWidth.add(string.length());
-        }
-        for (List<String> list : content) {
-            for (int index = 0; index < list.size(); index ++) {
-                if (collumnsWidth.get(index) < list.get(index).length()) {
-                    collumnsWidth.set(index, list.get(index).length());
+        boolean flip = true;
+
+        for (String string: content) {
+            if (flip) {
+                if (collumnsWidth[0] < string.length()) {
+                    collumnsWidth[0] = string.length();
+                    flip = !flip;
                 }
-            }
+            } else {
+                if (collumnsWidth[1] < string.length()) {
+                    collumnsWidth[1] = string.length();
+                    flip = !flip;
+                } 
+            }  
         }
-        collumnsWidth.toArray(this.collumnsWidth);
     }
 
     private String generateTopMiddleOrBottomLine(String modifier) {
@@ -118,65 +117,5 @@ class TablePrinter {
             repetitions --;
         }
         return String.join("", centeredField);
-    }
-    
-    private List<List<String>> injectIndex() {
-        if (wantIndex) {
-            List<List<String>> indexedContent = content;
-            Integer index = 1;
-            for (List<String> list : indexedContent) {
-                list.add(0, index.toString());
-                index ++;
-            }
-            return indexedContent;
-        }
-        return content;
-    }
-
-    private List<List<String>> processData() {
-        List<List<String>> input = injectIndex();
-        input.add(0, headers);
-        return input;
-    }
-
-    private boolean areListsLengthsValid() {
-        int listsLength = headers.size();
-
-        if (wantIndex) {
-            listsLength --;
-        }
-        for(List<String> list : content) {
-            if (list.size() != listsLength) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean checkIfListsAreEmpty() {
-        List<List<String>> headersAndContent = new ArrayList<>();
-
-        headersAndContent.add(headers);
-        for (List<String> list : content) {
-            headersAndContent.add(list);
-        }
-        for (List<String> list : headersAndContent) {
-            try {
-                String string = list.get(0);
-            } catch (IndexOutOfBoundsException e) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private void checkIfNoProblems() {
-        if (checkIfListsAreEmpty()) {
-            System.out.println("Error, some of lists passed to printer are empty");
-            System.exit(0);
-        } else if (!areListsLengthsValid()) {
-            System.out.println("Lists lengths are invalid. Amount of items in each sublist of content\nYou wish to print must be the same as amount of items in headers with\nthe exception of situation where you want program to add index. In this\ncase headers should contain 1 more item than each sublist of content to print");
-            System.exit(0);
-        }
     }
 }

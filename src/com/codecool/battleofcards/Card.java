@@ -17,40 +17,39 @@ class Card {
         this.fourthStat = fourthStat;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public int getFirstStat() {
+    public Integer getFirstStat() {
         return firstStat;
     }
 
-    public int getSecondStat() {
+    public Integer getSecondStat() {
         return secondStat;
     }
 
-    public int getThirdStat() {
+    public Integer getThirdStat() {
         return thirdStat;
     }
 
-    public int getFourthStat() {
+    public Integer getFourthStat() {
         return fourthStat;
     }
 
     public int getStat(int choice) {
 
-        while (true) {
-            switch (choice) {
-                case (1):
-                    return firstStat;
-                case (2):
-                    return secondStat;
-                case (3):
-                    return thirdStat;
-                case (4):
-                    return fourthStat;
-            }
+        switch (choice) {
+            case (1):
+                return firstStat;
+            case (2):
+                return secondStat;
+            case (3):
+                return thirdStat;
+            case (4):
+                return fourthStat;
         }
+        return 0;
     }
 
     public String toString() {
