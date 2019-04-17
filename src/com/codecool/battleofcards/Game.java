@@ -47,15 +47,17 @@ class Game {
 
         switch (types) {
 
-        case "H H":
-        default:
+        case "1":
             player1 = new Human();
             player2 = new Human();
             break;
 
-        case "H A":
+        case "2":
             player1 = new Human();
             player2 = new Ai();
+            break;
+        case "3":
+            // Main.getController().runGame();
             break;
         }
     }
@@ -66,7 +68,7 @@ class Game {
         boolean player1Turn = random.nextBoolean();
 
         while (gameOn) {
-            if (player1turn) {
+            if (player1Turn) {
                 player1.chooseStatToPlay();
             } else {
                 player2.chooseStatToPlay();

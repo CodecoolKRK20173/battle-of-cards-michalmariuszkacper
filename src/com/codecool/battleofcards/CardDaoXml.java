@@ -11,8 +11,9 @@ public class CardDaoXml implements CardDAO<Card> {
     private xmlReader reader = new xmlReader();
     private Document doc;
 
-    public CardDaoXml() {
+    public Document CardDaoXml() {
         doc = reader.loadXMLdocument("src/battleOfCards/xmls/cards.xml");
+        return doc;
     }
 
     public List<Card> getAllCards() {

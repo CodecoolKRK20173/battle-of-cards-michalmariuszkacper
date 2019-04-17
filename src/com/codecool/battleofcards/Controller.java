@@ -3,8 +3,6 @@ package com.codecool.battleofcards;
 import java.util.Iterator;
 import java.util.List;
 
-// import battleOfCards.CardDaoXml;
-
 public class Controller {
 
     private CardDaoXml cardDaoXml = new CardDaoXml();
@@ -23,35 +21,41 @@ public class Controller {
         return deck;
     }
 
-    // public List<Card> removeDealtCardsFromDeck(List<Card> dealtCards, List<Card>
-    // basicDeck) {
-    // List<Card> deckWithoutDealtCards = new ArrayList<Card>();
+    // private Game game = new Game();
 
-    // for (Card cardDeck : basicDeck) {
-    // for (Card cardDealtCard : dealtCards) {
-    // if (cardDealtCard.getId() == cardDeck.getId()) {
-    // deckWithoutDealtCards.add(cardDealthCard);
-    // }
-    // }
-    // }
-    // basicDeck.removeAll(deckWithoutDealtCards);
-    // return basicDeck;
+    public void runGame() {
+        View view = new View();
+        String selectionOfMenu = "";
+        do {
+            view.displayMenu();
+            view.displayMessage(view.validateSelectionOfMenu(selectionOfMenu));
+
+            selectionOfMenu = view.getInput("Selection: ");
+            switch (selectionOfMenu) {
+            case "1":
+                // startGame();
+                break;
+            case "2":
+                System.out.println("You picked option 2");
+                break;
+            case "3":
+                System.out.println("Closed correctly.");
+                break;
+            }
+        } while (view.validateSelectionOfMenu(selectionOfMenu));
+
+    }
+
+    // public void startGame() {
+    // View view = new View();
+    // String typeOfGame = "";
+    // do {
+    // view.displayTypeOfGame();
+    // view.displayMessage(view.validateTypeOfGameSelection(typeOfGame));
+
+    // typeOfGame = view.getInput("Type of game: ");
+    // game.createPlayers(typeOfGame);
+    // } while (view.validateTypeOfGameSelection(typeOfGame));
 
     // }
-
-    // public List<Card> removeDealtCardsFromDeck(List<Card> dealtCards, List<Card>
-    // basicDeck) {
-    // List<Card> deckWithoutDealtCards = new ArrayList<Card>();
-    // for (Card cardDeck : basicDeck) {
-    // for (Card cardDealtCard : dealtCards) {
-    // if (cardDealtCard.getId() == cardDeck.getId()) {
-    // deckWithoutDealtCards.add(cardDealthCard);
-    // }
-    // }
-    // }
-    // basicDeck.removeAll(deckWithoutDealtCards);
-    // return basicDeck;
-
-    // }
-
 }
