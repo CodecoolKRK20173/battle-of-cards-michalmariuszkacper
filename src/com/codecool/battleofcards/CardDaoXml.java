@@ -1,4 +1,4 @@
-package battleOfCards;
+package com.codecool.battleofcards;
 
 import java.util.List;
 import org.w3c.dom.Document;
@@ -7,17 +7,16 @@ import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import java.util.ArrayList;
 
-public class CardDaoXml {
+public class CardDaoXml implements CardDAO<Card> {
     private xmlReader reader = new xmlReader();
     private Document doc;
 
-    public CardDao() {
-
+    public CardDaoXml() {
         doc = reader.loadXMLdocument("src/battleOfCards/xmls/cards.xml");
     }
 
     public List<Card> getAllCards() {
-        Deck deck = new Deck();
+        List<Card> deck = new ArrayList<>();
         NodeList nlist = doc.getElementsByTagName("Airplane");
 
         for (int i = 0; i < nlist.getLength(); i++) {

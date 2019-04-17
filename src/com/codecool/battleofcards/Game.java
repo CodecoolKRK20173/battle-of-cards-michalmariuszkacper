@@ -2,14 +2,46 @@
 package com.codecool.battleofcards;
 
 import java.util.Random;
+import java.util.*;
 
 class Game {
 
-    private Pile deck = new Pile();
-    private Pile table = new Pile();
-    private boolean gameOn = true;
+    private Controller controller = new Controller();
+
+    private List<Card> basicDeck;
+    private List<Card> table;
+
+    private Boolean gameOn;
     private Player player1;
     private Player player2;
+
+    public Game() {
+        basicDeck = controller.createDeck();
+        dealCards();
+        gameOn = true;
+
+    }
+
+    public void runGame() {
+        while (gameOn) {
+
+        }
+    }
+
+    private void dealCards() {
+        int playerDeckSize = basicDeck.size() / 2;
+        Iterator<Card> deckIterator = basicDeck.iterator();
+        for (int i = 1; i < basicDeck.size(); i++) {
+            Card card = deckIterator.next();
+            if (i <= playerDeckSize) {
+                player1.addCard(card);
+            } else {
+                player2.addCard(card);
+            }
+
+        }
+
+    }
 
     public void createPlayers(String types) {
 
