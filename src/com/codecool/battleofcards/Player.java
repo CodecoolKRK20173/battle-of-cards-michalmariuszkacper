@@ -8,19 +8,35 @@ public class Player {
     private String playerName;
 
     public Player(String playerName) {
+        
         this.playerName = playerName;
+    }
 
+    public Player() {
+        playerName = "Ai";
     }
 
     public void addCard(Card card) {
         cards.addCardToPile(card);
     }
 
-    private Pile getPile() {
+    public void removeCard() {
+        cards.removeCard();
+    }
+
+    public Card getCard() {
+        return cards.getTopCard();
+    }
+
+    public Pile getPile() {
         return cards;
     }
 
     public int chooseStatToPlay() {
         return 0;
+    }
+
+    public String getName() {
+        return playerName;
     }
 }

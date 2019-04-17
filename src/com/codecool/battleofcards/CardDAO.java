@@ -1,6 +1,8 @@
 package com.codecool.battleofcards;
 
-// public interface Dao<T> {
-//     List<T> getAllCards();
+import java.util.List;
 
-// }
+public interface CardDAO<T> {
+    List<T> getAllCards();
+
+}

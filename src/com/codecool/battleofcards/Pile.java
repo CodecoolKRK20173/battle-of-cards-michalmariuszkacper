@@ -31,6 +31,10 @@ public class Pile {
         return hand;
     }
 
+    public void removeCard() {
+        hand.remove(hand.size() -1);
+    }
+
     // public void addCard(Card card) {
     // cards.add(card);
     // card.setContainingPile(this);

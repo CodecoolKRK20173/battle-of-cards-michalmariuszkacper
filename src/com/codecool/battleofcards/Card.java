@@ -29,21 +29,20 @@ class Card {
         this.containingPile = containingPile;
     }
 
-    public int getFirstStat() {
-        return firstStat;
+    public int getStat(int choice) {
+
+        switch (choice) {
+            case (1): default:
+                return firstStat;
+            case (2):
+                return secondStat;
+            case (3):
+                return thirdStat;
+            case (4):
+                return fourthStat;
+        }
     }
 
-    public int getSecondStat() {
-        return secondStat;
-    }
-
-    public int getThirdStat() {
-        return thirdStat;
-    }
-
-    public int getFourthStat() {
-        return fourthStat;
-    }
 
     // public void moveToPile(Pile destPile) {
     // this.getContainingPile().getCards().remove(this);
