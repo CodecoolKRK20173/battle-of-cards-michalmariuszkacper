@@ -3,62 +3,55 @@ package com.codecool.battleofcards;
 
 import java.util.Random;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.lang.InterruptedException;
 
 class Game {
 
-    private Controller controller = new Controller();
-
-    private List<Card> basicDeck;
-    private List<Card> table;
-
+    private List<Card> deck;
+    private List<Card> table = new ArrayList<>();
     private Boolean gameOn;
     private Player player1;
     private Player player2;
+    private View view = new View();
+    private boolean flip;
 
-    public Game() {
-        basicDeck = controller.createDeck();
-        dealCards();
+
+    public Game(List<Card> deck) {
+
+        this.deck = deck;
         gameOn = true;
-
     }
 
-    public void runGame() {
-        while (gameOn) {
+    private void dealCards(List<Card> deck) {
 
+        for (int index = 0; index < deck.size(); index += 2) {
+            player1.addCard(deck.get(index));
+            player2.addCard(deck.get(index + 1));
+            System.out.println(deck.get(index + 1));
         }
     }
 
-    private void dealCards() {
-        int playerDeckSize = basicDeck.size() / 2;
-        Iterator<Card> deckIterator = basicDeck.iterator();
-        for (int i = 1; i < basicDeck.size(); i++) {
-            Card card = deckIterator.next();
-            if (i <= playerDeckSize) {
-                player1.addCard(card);
-            } else {
-                player2.addCard(card);
-            }
+    public void createPlayers(String types) throws InterruptedException {
 
-        }
-
-    }
-
-    public void createPlayers(String types) {
 
         switch (types) {
+            case "1":
+                player1 = new Human(view.getInput("Enter Your name: "));
+                player2 = new Human(view.getInput("Enter Your name: "));
+                dealCards(deck);
+                playGame();
+                break;
 
-        case "1":
-            player1 = new Human();
-            player2 = new Human();
-            break;
-
-        case "2":
-            player1 = new Human();
-            player2 = new Ai();
-            break;
-        case "3":
-            // Main.getController().runGame();
-            break;
+            case "2":
+                player1 = new Human(view.getInput("Enter Your name: "));
+                player2 = new Ai();
+                dealCards(deck);
+                playGame();
+                break;
+            case "3":
+                // Main.getController().runGame();
+                break;
         }
     }
 
@@ -80,22 +73,23 @@ class Game {
         secondPlayer.removeCard();
     }
 
-    public void playGame() {
+    public void playGame() throws InterruptedException {
 
         Random random = new Random();
-        boolean player1Turn = random.nextBoolean();
+        Boolean player1Turn = random.nextBoolean();
         String winner = "";
         
 
         while (gameOn) {
+            
             if (player1Turn) {
-                if (!playRound(player1, player2)); {
-                    player1Turn = !player1Turn;
+                playRound(player1, player2); {
                 }
             } else {
-                if (!playRound(player2, player1)); {
-                    player1Turn = !player1Turn;
-                }
+                playRound(player2, player1);
+            }
+            if (flip) {
+                player1Turn = !player1Turn;
             }
             if (player1.getPile().getCards().size() == 0) {
                 gameOn = false;
@@ -108,29 +102,43 @@ class Game {
         gameOver(winner);
     }
 
-    private Boolean playRound(Player activePlayer, Player secondPlayer) {
+    private void playRound(Player activePlayer, Player secondPlayer) throws InterruptedException {
 
         moveCardsOnTable(activePlayer, secondPlayer);
+        View printer = new View();
+        printer.clearScreen();
+        printer.print(activePlayer.getName() + "\'s move\n");
+        printer.print(activePlayer.getCard().toString()); // implement proper card printer here
         int stat = activePlayer.chooseStatToPlay();
         Boolean didIWin = isYourCardStronger(table.get(table.size() -2), table.get(table.size() -1), stat);
+
         if (didIWin) {
             for (Card card : table) {
                 activePlayer.getPile().getCards().add(0, card);
             }
+            flip = false;
             table.clear();
-            return true;
+            printer.print(activePlayer.getName() + " won this round!");
+            TimeUnit.SECONDS.sleep(2);
         } else if (didIWin == null) {
-            return null;
+            printer.print("It's a draw!");
+            TimeUnit.SECONDS.sleep(2);
+            flip = false;
         } else {
             for (Card card : table) {
                 secondPlayer.getPile().getCards().add(0, card);
             }
+            flip = true;
             table.clear(); 
+            printer.print(secondPlayer.getName() + " won this round!");
+            TimeUnit.SECONDS.sleep(2);
         }
-        return false;
     }
 
-    private void gameOver(String winner) {
+    private void gameOver(String winner) throws InterruptedException {
         System.out.println("Game over, the winner is " + winner + "!");
+        TimeUnit.SECONDS.sleep(5);
+        Controller controller = new Controller();
+        controller.runGame();
     }
 }

@@ -7,7 +7,7 @@ class Card {
     private int secondStat;
     private int thirdStat;
     private int fourthStat;
-    private Pile containingPile;
+
 
     public Card(int id, int firstStat, int secondStat, int thirdStat, int fourthStat) {
         this.id = id;
@@ -21,31 +21,40 @@ class Card {
         return id;
     }
 
-    public Pile getContainingPile() {
-        return containingPile;
+    public int getFirstStat() {
+        return firstStat;
     }
 
-    public void setContainingPile(Pile containingPile) {
-        this.containingPile = containingPile;
+    public int getSecondStat() {
+        return secondStat;
+    }
+
+    public int getThirdStat() {
+        return thirdStat;
+    }
+
+    public int getFourthStat() {
+        return fourthStat;
     }
 
     public int getStat(int choice) {
 
-        switch (choice) {
-            case (1): default:
-                return firstStat;
-            case (2):
-                return secondStat;
-            case (3):
-                return thirdStat;
-            case (4):
-                return fourthStat;
+        while (true) {
+            switch (choice) {
+                case (1):
+                    return firstStat;
+                case (2):
+                    return secondStat;
+                case (3):
+                    return thirdStat;
+                case (4):
+                    return fourthStat;
+            }
         }
     }
 
+    public String toString() {
 
-    // public void moveToPile(Pile destPile) {
-    // this.getContainingPile().getCards().remove(this);
-    // destPile.addCard(this);
-    // }
+        return id + " " + firstStat + " " + secondStat + " " + thirdStat + " " + fourthStat;
+    }
 }

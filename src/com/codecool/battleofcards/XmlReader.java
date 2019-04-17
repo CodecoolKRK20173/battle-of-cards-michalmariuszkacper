@@ -5,7 +5,7 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import java.io.File;
 
-public class xmlReader {
+public class XmlReader {
     private Document doc;
 
     public Document loadXMLdocument(String xmlPath) {

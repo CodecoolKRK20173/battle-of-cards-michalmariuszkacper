@@ -2,6 +2,8 @@ package com.codecool.battleofcards;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Controller {
 
@@ -9,53 +11,79 @@ public class Controller {
     private List<Card> deck;
     private Player player1;
     private Player player2;
-
     private int playersNumber = 2;
 
-    public List<Card> createDeck() {
-        deck = cardDaoXml.getAllCards();
-        return deck;
+
+    public Controller() {
+
+        createDeck();
     }
 
     public List<Card> getDeck() {
+
         return deck;
     }
 
-    // private Game game = new Game();
+    public void createDeck() {
+        
+        //deck = cardDaoXml.getAllCards();
+        List<Card> cards = new ArrayList<>();
+        Card card;
 
-    public void runGame() {
-        View view = new View();
-        String selectionOfMenu = "";
-        do {
-            view.displayMenu();
-            view.displayMessage(view.validateSelectionOfMenu(selectionOfMenu));
-
-            selectionOfMenu = view.getInput("Selection: ");
-            switch (selectionOfMenu) {
-            case "1":
-                // startGame();
-                break;
-            case "2":
-                System.out.println("You picked option 2");
-                break;
-            case "3":
-                System.out.println("Closed correctly.");
-                break;
-            }
-        } while (view.validateSelectionOfMenu(selectionOfMenu));
-
+        for (int index = 10; index < 40; index += 1) {
+            card = new Card(999, index, index +5, index -5, index +20);
+            cards.add(card);
+        }
+        Collections.shuffle(cards);
+        deck = cards;
     }
 
-    // public void startGame() {
-    // View view = new View();
-    // String typeOfGame = "";
-    // do {
-    // view.displayTypeOfGame();
-    // view.displayMessage(view.validateTypeOfGameSelection(typeOfGame));
+    public void runGame() throws InterruptedException {
 
-    // typeOfGame = view.getInput("Type of game: ");
-    // game.createPlayers(typeOfGame);
-    // } while (view.validateTypeOfGameSelection(typeOfGame));
+        View view = new View();
+        String selectionOfMenu = "";
+        boolean wantToExit = false;
 
-    // }
+        while (!wantToExit) {
+            do {
+                view.displayMenu();
+                view.displayMessage(view.validateSelectionOfMenu(selectionOfMenu));
+    
+                selectionOfMenu = view.getInput("Selection: ");
+                switch (selectionOfMenu) {
+                case "1":
+                    startGame();
+                    break;
+                case "2":
+                    System.out.println("You picked option 2");
+                    break;
+                case "3":
+                    System.out.println("Closed correctly.");
+                    wantToExit = true;
+                    break;
+                }
+            } while (view.validateSelectionOfMenu(selectionOfMenu));
+        }
+    }
+
+    public void startGame() throws InterruptedException {
+
+        System.out.println(deck.get(7));
+        View view = new View();
+        String typeOfGame = "";
+
+        do {
+        view.displayTypeOfGame();
+        view.displayMessage(view.validateTypeOfGameSelection(typeOfGame));
+        Game game = new Game(deck);
+        typeOfGame = view.getInput("Type of game: ");
+        game.createPlayers(typeOfGame);
+        } while (view.validateTypeOfGameSelection(typeOfGame));
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Controller controller = new Controller();
+        controller.runGame();
+    }
 }

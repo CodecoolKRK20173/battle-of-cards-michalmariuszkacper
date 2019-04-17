@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Player {
 
-    private Pile cards;
+    private Pile cards = new Pile();
     private String playerName;
 
     public Player(String playerName) {
@@ -38,5 +38,9 @@ public class Player {
 
     public String getName() {
         return playerName;
+    }
+
+    public void setName(String name) {
+        playerName = name;
     }
 }

@@ -12,12 +12,12 @@ import java.util.Arrays;
 class View {
 
     public void displayMenu() {
-        System.out.print("\033[H\033[2J");
+        clearScreen();
         System.out.println("MAIN MENU:\n" + "1. Start game\n" + "2. Edit cards\n" + "3. End game\n");
     }
 
     public void displayTypeOfGame() {
-        System.out.print("\033[H\033[2J");
+        clearScreen();
         System.out.println(
                 "TYPE OF GAME:\n" + "1. Human vs human\n" + "2. Human vs Computer\n" + "3. Back to main menu\n");
     }
@@ -37,6 +37,14 @@ class View {
             }
         }
         return data;
+    }
+
+    public void clearScreen() {
+        System.out.print("\033[H\033[2J");
+    }
+
+    public void print(String message) {
+        System.out.println(message);
     }
 
     public void displayMessage(boolean validSelection) {

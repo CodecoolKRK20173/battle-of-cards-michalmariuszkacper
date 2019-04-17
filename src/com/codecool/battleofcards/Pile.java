@@ -8,16 +8,14 @@ public class Pile {
 
     private List<Card> hand = new ArrayList<>();
 
-    public List<Card> getPile() {
-        return hand;
-    }
 
     public void addCardToPile(Card card) {
-        hand.add(card);
 
+        hand.add(card);
     }
 
     public int getPileSize() {
+
         return hand.size() - 1;
     }
 
@@ -32,11 +30,7 @@ public class Pile {
     }
 
     public void removeCard() {
+
         hand.remove(hand.size() -1);
     }
-
-    // public void addCard(Card card) {
-    // cards.add(card);
-    // card.setContainingPile(this);
-    // }
 }

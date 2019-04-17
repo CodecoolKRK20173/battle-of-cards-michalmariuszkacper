@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CardDaoXml implements CardDAO<Card> {
-    private xmlReader reader = new xmlReader();
+    private XmlReader reader = new XmlReader();
     private Document doc;
 
-    public Document CardDaoXml() {
-        doc = reader.loadXMLdocument("src/battleOfCards/xmls/cards.xml");
+    public Document cardDaoXml() {
+        doc = reader.loadXMLdocument("cards.xml");
         return doc;
     }
 
