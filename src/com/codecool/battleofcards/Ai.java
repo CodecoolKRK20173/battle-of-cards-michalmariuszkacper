@@ -11,10 +11,10 @@ class Ai extends Player {
         
         Card card = super.getPile().getTopCard();
         int choice = 1;
-        int firstStatMax = 39;
-        int secondStatMax = 44;
-        int thirdStatMax = 34;
-        int fourthStatMax = 59;
+        int firstStatMax = 1500;
+        int secondStatMax = 500;
+        int thirdStatMax = 1500;
+        int fourthStatMax = 15;
         int curentPercentage = countPercentage(card.getFirstStat(), firstStatMax);
         
         

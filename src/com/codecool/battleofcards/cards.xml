@@ -60,6 +60,46 @@
           
         </Evals>
     </Airplane>
+    <Airplane planeName="rrrrrrrrrrrrrr">
+       
+        <Evals>
+            <Eval id="maxspeed">1200</Eval>
+            <Eval id="ammo">500</Eval>
+            <Eval id="radarRange">1100</Eval>
+            <Eval id="wingspan">12</Eval>
+          
+        </Evals>
+    </Airplane>
+     <Airplane planeName="ttttttttttt">
+       
+        <Evals>
+            <Eval id="maxspeed">1200</Eval>
+            <Eval id="ammo">500</Eval>
+            <Eval id="radarRange">1100</Eval>
+            <Eval id="wingspan">12</Eval>
+          
+        </Evals>
+    </Airplane>
+     <Airplane planeName="gggggggggggg">
+       
+        <Evals>
+            <Eval id="maxspeed">1200</Eval>
+            <Eval id="ammo">500</Eval>
+            <Eval id="radarRange">1100</Eval>
+            <Eval id="wingspan">12</Eval>
+          
+        </Evals>
+    </Airplane>
+     <Airplane planeName="vvvvvvvvvvv">
+       
+        <Evals>
+            <Eval id="maxspeed">1200</Eval>
+            <Eval id="ammo">500</Eval>
+            <Eval id="radarRange">1100</Eval>
+            <Eval id="wingspan">12</Eval>
+          
+        </Evals>
+    </Airplane>
    
 
 </Cards>

@@ -19,7 +19,7 @@ public class Pile {
     }
 
     public Card getTopCard() {
-        System.out.println(hand.size() + "xxxxxxxx");
+        
         return hand.get(hand.size() - 1);
     }
 

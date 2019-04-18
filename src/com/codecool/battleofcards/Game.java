@@ -56,14 +56,14 @@ class Game {
         }
     }
 
-    private Boolean isYourCardStronger(Card card1, Card card2, int stat) {
+    private int isYourCardStronger(Card card1, Card card2, int stat) {
 
         if (card1.getStat(stat) - card2.getStat(stat) > 0) {
-            return true;
+            return 1;
         } else if (card1.getStat(stat) - card2.getStat(stat) == 0) {
-            return null;
+            return 2;
         }
-        return false;
+        return 3;
     }
 
     private void moveCardsOnTable(Player activePlayer, Player secondPlayer) {
@@ -131,9 +131,17 @@ class Game {
         String str = cardprinter.getOutput();
         printer.print(str);
         int stat = activePlayer.chooseStatToPlay();
-        Boolean didIWin = isYourCardStronger(table.get(table.size() - 2), table.get(table.size() - 1), stat);
+        int didIWin = isYourCardStronger(table.get(table.size() - 2), table.get(table.size() - 1), stat);
+        for (Card card : player1.getPile().getCards()) {
+            view.print(card.toString());
+        }
+        view.print("\n");
+        for (Card card : player2.getPile().getCards()) {
+            view.print(card.toString());
+        }
+        System.out.println("lalala");
 
-        if (didIWin) {
+        if (didIWin == 1) {
             for (Card card : table) {
                 activePlayer.getPile().getCards().add(0, card);
             }
@@ -141,7 +149,7 @@ class Game {
             table.clear();
             printer.print("\n" + activePlayer.getName() + " won this round!");
             TimeUnit.SECONDS.sleep(2);
-        } else if (didIWin == null) {
+        } else if (didIWin == 2) {
             printer.print("\nIt's a draw!");
             TimeUnit.SECONDS.sleep(2);
             flip = false;
