@@ -26,15 +26,6 @@ public class Controller {
     public void createDeck() throws NullPointerException {
 
         deck = cardDaoXml.getAllCards();
-        // List<Card> cards = new ArrayList<>();
-        // Card card;
-
-        // for (int index = 10; index < 40; index += 1) {
-        // card = new Card("Plane name", index, index +5, index -5, index +20);
-        // cards.add(card);
-        // }
-        // Collections.shuffle(cards);
-        // deck = cards;
     }
 
     public void runGame() throws InterruptedException {

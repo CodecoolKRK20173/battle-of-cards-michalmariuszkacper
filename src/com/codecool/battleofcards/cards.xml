@@ -3,100 +3,100 @@
     <Airplane planeName="F16">
         
         <Evals>
-            <Eval id="maxspeed">1000</Eval>
-            <Eval id="ammo">300</Eval>
-            <Eval id="radarRange">1500</Eval>
-            <Eval id="wingspan">15</Eval>
+            <Eval id="maxspeed">100</Eval>
+            <Eval id="ammo">2300</Eval>
+            <Eval id="radarRange">1560</Eval>
+            <Eval id="wingspan">565</Eval>
             
         </Evals>
     </Airplane>
     <Airplane planeName="LockeedT33">
        
         <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
+            <Eval id="maxspeed">1800</Eval>
+            <Eval id="ammo">200</Eval>
+            <Eval id="radarRange">1150</Eval>
+            <Eval id="wingspan">15</Eval>
+          
+        </Evals>
+    </Airplane>
+     <Airplane planeName="Albatros L 84">
+       
+        <Evals>
+            <Eval id="maxspeed">1240</Eval>
+            <Eval id="ammo">300</Eval>
+            <Eval id="radarRange">1150</Eval>
+            <Eval id="wingspan">162</Eval>
+          
+        </Evals>
+    </Airplane>
+     <Airplane planeName="Blériot 118">
+       
+        <Evals>
+            <Eval id="maxspeed">1100</Eval>
+            <Eval id="ammo">502</Eval>
+            <Eval id="radarRange">1104</Eval>
             <Eval id="wingspan">12</Eval>
           
         </Evals>
     </Airplane>
-     <Airplane planeName="rrrrrrrrrrrrrr">
+     <Airplane planeName="Bristol Type 146">
        
         <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
+            <Eval id="maxspeed">1870</Eval>
+            <Eval id="ammo">530</Eval>
+            <Eval id="radarRange">1230</Eval>
             <Eval id="wingspan">12</Eval>
           
         </Evals>
     </Airplane>
-     <Airplane planeName="ttttttttttt">
+     <Airplane planeName="Curtiss XF13C">
        
         <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
+            <Eval id="maxspeed">1270</Eval>
+            <Eval id="ammo">5650</Eval>
+            <Eval id="radarRange">1160</Eval>
+            <Eval id="wingspan">18</Eval>
+          
+        </Evals>
+    </Airplane>
+    <Airplane planeName="Dufaux C.1">
+       
+        <Evals>
+            <Eval id="maxspeed">1280</Eval>
+            <Eval id="ammo">550</Eval>
+            <Eval id="radarRange">1160</Eval>
+            <Eval id="wingspan">13</Eval>
+          
+        </Evals>
+    </Airplane>
+     <Airplane planeName="Fairey Flycatcher">
+       
+        <Evals>
+            <Eval id="maxspeed">1760</Eval>
+            <Eval id="ammo">550</Eval>
+            <Eval id="radarRange">1400</Eval>
             <Eval id="wingspan">12</Eval>
           
         </Evals>
     </Airplane>
-     <Airplane planeName="gggggggggggg">
+     <Airplane planeName="Gorbunov 105">
        
         <Evals>
-            <Eval id="maxspeed">1200</Eval>
+            <Eval id="maxspeed">1289</Eval>
             <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
-            <Eval id="wingspan">12</Eval>
+            <Eval id="radarRange">1160</Eval>
+            <Eval id="wingspan">62</Eval>
           
         </Evals>
     </Airplane>
-     <Airplane planeName="vvvvvvvvvvv">
+     <Airplane planeName="Hawker F.20/27">
        
         <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
-            <Eval id="wingspan">12</Eval>
-          
-        </Evals>
-    </Airplane>
-    <Airplane planeName="rrrrrrrrrrrrrr">
-       
-        <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
-            <Eval id="wingspan">12</Eval>
-          
-        </Evals>
-    </Airplane>
-     <Airplane planeName="ttttttttttt">
-       
-        <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
-            <Eval id="wingspan">12</Eval>
-          
-        </Evals>
-    </Airplane>
-     <Airplane planeName="gggggggggggg">
-       
-        <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
-            <Eval id="wingspan">12</Eval>
-          
-        </Evals>
-    </Airplane>
-     <Airplane planeName="vvvvvvvvvvv">
-       
-        <Evals>
-            <Eval id="maxspeed">1200</Eval>
-            <Eval id="ammo">500</Eval>
-            <Eval id="radarRange">1100</Eval>
-            <Eval id="wingspan">12</Eval>
+            <Eval id="maxspeed">1400</Eval>
+            <Eval id="ammo">570</Eval>
+            <Eval id="radarRange">1150</Eval>
+            <Eval id="wingspan">18</Eval>
           
         </Evals>
     </Airplane>

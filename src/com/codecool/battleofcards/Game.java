@@ -84,8 +84,6 @@ class Game {
 
             if (player1Turn) {
                 playRound(player1, player2);
-                {
-                }
             } else {
                 playRound(player2, player1);
             }
@@ -132,14 +130,7 @@ class Game {
         printer.print(str);
         int stat = activePlayer.chooseStatToPlay();
         int didIWin = isYourCardStronger(table.get(table.size() - 2), table.get(table.size() - 1), stat);
-        for (Card card : player1.getPile().getCards()) {
-            view.print(card.toString());
-        }
-        view.print("\n");
-        for (Card card : player2.getPile().getCards()) {
-            view.print(card.toString());
-        }
-        System.out.println("lalala");
+        
 
         if (didIWin == 1) {
             for (Card card : table) {
@@ -148,10 +139,10 @@ class Game {
             flip = false;
             table.clear();
             printer.print("\n" + activePlayer.getName() + " won this round!");
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(0);
         } else if (didIWin == 2) {
             printer.print("\nIt's a draw!");
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(0);
             flip = false;
         } else {
             for (Card card : table) {
@@ -160,7 +151,7 @@ class Game {
             flip = true;
             table.clear();
             printer.print("\n" + secondPlayer.getName() + " won this round!");
-            TimeUnit.SECONDS.sleep(2);
+            TimeUnit.SECONDS.sleep(0);
         }
     }
 
