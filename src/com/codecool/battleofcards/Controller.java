@@ -45,7 +45,9 @@ public class Controller {
                     startGame();
                     break;
                 case "2":
-                    view.print("You picked option 2");
+                    //view.print("You picked option 2");
+                    Game game = new Game(deck);
+                    game.printCards();
                     break;
                 case "3":
                     view.print("Closed correctly.");

@@ -139,10 +139,10 @@ class Game {
             flip = false;
             table.clear();
             printer.print("\n" + activePlayer.getName() + " won this round!");
-            TimeUnit.SECONDS.sleep(0);
+            TimeUnit.SECONDS.sleep(1);
         } else if (didIWin == 2) {
             printer.print("\nIt's a draw!");
-            TimeUnit.SECONDS.sleep(0);
+            TimeUnit.SECONDS.sleep(1);
             flip = false;
         } else {
             for (Card card : table) {
@@ -151,7 +151,16 @@ class Game {
             flip = true;
             table.clear();
             printer.print("\n" + secondPlayer.getName() + " won this round!");
-            TimeUnit.SECONDS.sleep(0);
+            TimeUnit.SECONDS.sleep(1);
+        }
+    }
+
+    public void printCards() {
+
+        for (Card card : deck) {
+            CardsPrinter cp = new CardsPrinter(parseCardForPrint(card));
+            cp.prepareToPrint();
+            view.print(cp.getOutput());
         }
     }
 

@@ -13,7 +13,7 @@ class View {
 
     public void displayMenu() {
         clearScreen();
-        System.out.println("MAIN MENU:\n1. Start game\n2. Edit cards\n3. End game\n");
+        System.out.println("MAIN MENU:\n1. Start game\n2. Display cards\n3. End game\n");
     }
 
     public void displayTypeOfGame() {

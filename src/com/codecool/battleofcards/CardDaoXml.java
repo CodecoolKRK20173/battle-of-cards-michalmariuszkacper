@@ -15,7 +15,7 @@ public class CardDaoXml implements CardDAO<Card> {
     private Document doc;
 
     public Document cardDaoXml() {
-        doc = reader.loadXMLdocument("src/com/codecool/battleofcards/cards.xml");
+        doc = reader.loadXMLdocument("src/com/codecool/battleofcards/resources/cards.xml");
         return doc;
     }
 

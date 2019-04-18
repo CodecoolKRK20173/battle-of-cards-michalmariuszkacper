@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Card>
-    <airplane id="F16">
-        <speed>800</speed>
-        <range>1500</range>
-        <capasity>520</capasity>
-        <value>12000000</value>
-    </airplane>
-</Card>
