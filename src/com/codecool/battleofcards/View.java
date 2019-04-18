@@ -13,13 +13,13 @@ class View {
 
     public void displayMenu() {
         clearScreen();
-        System.out.println("MAIN MENU:\n" + "1. Start game\n" + "2. Edit cards\n" + "3. End game\n");
+        System.out.println("MAIN MENU:\n1. Start game\n2. Edit cards\n3. End game\n");
     }
 
     public void displayTypeOfGame() {
         clearScreen();
         System.out.println(
-                "TYPE OF GAME:\n" + "1. Human vs human\n" + "2. Human vs Computer\n" + "3. Back to main menu\n");
+                "TYPE OF GAME:\n1. Human vs human\n2. Human vs Computer\n3. Ai vs Ai\n4. Back to main menu\n");
     }
 
     public String getInput(String communique) {
@@ -54,7 +54,7 @@ class View {
     }
 
     public boolean validateTypeOfGameSelection(String typeOfGame) {
-        List<String> selections = new ArrayList<>(Arrays.asList("1", "2", "3"));
+        List<String> selections = new ArrayList<>(Arrays.asList("1", "2", "3", "4"));
         if (typeOfGame == "") {
             return false;
         } else if (!selections.contains(typeOfGame.toUpperCase())) {
@@ -72,5 +72,4 @@ class View {
         }
         return false;
     }
-
 }

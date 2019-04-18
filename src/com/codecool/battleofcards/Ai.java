@@ -2,6 +2,11 @@ package com.codecool.battleofcards;
 
 class Ai extends Player {
 
+    public Ai(String name) {
+
+        super.setName(name);
+    }
+
     public int chooseStatToPlay() {
         
         Card card = super.getPile().getTopCard();

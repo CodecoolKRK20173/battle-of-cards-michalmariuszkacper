@@ -1,6 +1,5 @@
 package com.codecool.battleofcards;
 
-import java.util.*;
 
 public class Player {
 
@@ -13,7 +12,6 @@ public class Player {
     }
 
     public Player() {
-        playerName = "Ai";
     }
 
     public void addCard(Card card) {
@@ -32,7 +30,7 @@ public class Player {
         return cards;
     }
 
-    public int chooseStatToPlay() {
+    public int chooseStatToPlay() throws InterruptedException {
         return 0;
     }
 

@@ -8,7 +8,6 @@ public class Pile {
 
     private List<Card> hand = new ArrayList<>();
 
-
     public void addCardToPile(Card card) {
 
         hand.add(card);
@@ -20,7 +19,7 @@ public class Pile {
     }
 
     public Card getTopCard() {
-
+        System.out.println(hand.size() + "xxxxxxxx");
         return hand.get(hand.size() - 1);
     }
 
@@ -31,6 +30,6 @@ public class Pile {
 
     public void removeCard() {
 
-        hand.remove(hand.size() -1);
+        hand.remove(hand.size() - 1);
     }
 }

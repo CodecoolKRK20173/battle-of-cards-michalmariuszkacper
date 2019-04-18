@@ -1,9 +1,9 @@
-
 package com.codecool.battleofcards;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
-import java.lang.InterruptedException;
 
 class Game {
 
@@ -14,7 +14,6 @@ class Game {
     private Player player2;
     private View view = new View();
     private boolean flip;
-
 
     public Game(List<Card> deck) {
 
@@ -32,24 +31,28 @@ class Game {
 
     public void createPlayers(String types) throws InterruptedException {
 
-
         switch (types) {
-            case "1":
-                player1 = new Human(view.getInput("Enter Your name: "));
-                player2 = new Human(view.getInput("Enter Your name: "));
-                dealCards(deck);
-                playGame();
-                break;
+        case "1":
+            player1 = new Human(view.getInput("Enter Your name: "));
+            player2 = new Human(view.getInput("Enter Your name: "));
+            dealCards(deck);
+            playGame();
+            break;
 
-            case "2":
-                player1 = new Human(view.getInput("Enter Your name: "));
-                player2 = new Ai();
-                dealCards(deck);
-                playGame();
-                break;
-            case "3":
-                // Main.getController().runGame();
-                break;
+        case "2":
+            player1 = new Human(view.getInput("Enter Your name: "));
+            player2 = new Ai("Computer");
+            dealCards(deck);
+            playGame();
+            break;
+        case "3":
+            player1 = new Ai("Computer");
+            player2 = new Ai("Computer 2");
+            dealCards(deck);
+            playGame();
+        case "4":
+            // Main.getController().runGame();
+            break;
         }
     }
 
@@ -76,12 +79,12 @@ class Game {
         Random random = new Random();
         Boolean player1Turn = random.nextBoolean();
         String winner = "";
-        
 
         while (gameOn) {
-            
+
             if (player1Turn) {
-                playRound(player1, player2); {
+                playRound(player1, player2);
+                {
                 }
             } else {
                 playRound(player2, player1);
@@ -105,19 +108,19 @@ class Game {
         List<String> list = new ArrayList<>();
 
         list.add("Specification");
-        list.add(card.getId().toString());
-        list.add("FirstStat");
+        list.add(card.getName());
+        list.add("Max Speed");
         list.add(card.getFirstStat().toString());
-        list.add("SecondStat");
+        list.add("Ammo");
         list.add(card.getSecondStat().toString());
-        list.add("ThirdStat");
+        list.add("Radar Range");
         list.add(card.getThirdStat().toString());
-        list.add("FourthStat");
+        list.add("Wing Span");
         list.add(card.getFourthStat().toString());
         return list;
     }
 
-    private void playRound(Player activePlayer, Player secondPlayer) throws InterruptedException {
+    private void playRound(Player activePlayer, Player secondPlayer) throws InterruptedException, NullPointerException {
 
         moveCardsOnTable(activePlayer, secondPlayer);
         View printer = new View();
@@ -128,7 +131,7 @@ class Game {
         String str = cardprinter.getOutput();
         printer.print(str);
         int stat = activePlayer.chooseStatToPlay();
-        Boolean didIWin = isYourCardStronger(table.get(table.size() -2), table.get(table.size() -1), stat);
+        Boolean didIWin = isYourCardStronger(table.get(table.size() - 2), table.get(table.size() - 1), stat);
 
         if (didIWin) {
             for (Card card : table) {
@@ -147,14 +150,14 @@ class Game {
                 secondPlayer.getPile().getCards().add(0, card);
             }
             flip = true;
-            table.clear(); 
+            table.clear();
             printer.print("\n" + secondPlayer.getName() + " won this round!");
             TimeUnit.SECONDS.sleep(2);
         }
     }
 
     private void gameOver(String winner) throws InterruptedException {
-        System.out.println("Game over, the winner is " + winner + "!");
+        view.print("Game over, the winner is " + winner + "!");
         TimeUnit.SECONDS.sleep(5);
         Controller controller = new Controller();
         controller.runGame();

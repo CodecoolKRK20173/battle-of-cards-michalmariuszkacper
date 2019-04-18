@@ -1,9 +1,9 @@
 package com.codecool.battleofcards;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.io.*;
 
 public class Controller {
 
@@ -12,7 +12,6 @@ public class Controller {
     private Player player1;
     private Player player2;
     private int playersNumber = 2;
-
 
     public Controller() {
 
@@ -24,18 +23,18 @@ public class Controller {
         return deck;
     }
 
-    public void createDeck() {
-        
-        //deck = cardDaoXml.getAllCards();
-        List<Card> cards = new ArrayList<>();
-        Card card;
+    public void createDeck() throws NullPointerException {
 
-        for (int index = 10; index < 40; index += 1) {
-            card = new Card(999, index, index +5, index -5, index +20);
-            cards.add(card);
-        }
-        Collections.shuffle(cards);
-        deck = cards;
+        deck = cardDaoXml.getAllCards();
+        // List<Card> cards = new ArrayList<>();
+        // Card card;
+
+        // for (int index = 10; index < 40; index += 1) {
+        // card = new Card("Plane name", index, index +5, index -5, index +20);
+        // cards.add(card);
+        // }
+        // Collections.shuffle(cards);
+        // deck = cards;
     }
 
     public void runGame() throws InterruptedException {
@@ -48,17 +47,17 @@ public class Controller {
             do {
                 view.displayMenu();
                 view.displayMessage(view.validateSelectionOfMenu(selectionOfMenu));
-    
+
                 selectionOfMenu = view.getInput("Selection: ");
                 switch (selectionOfMenu) {
                 case "1":
                     startGame();
                     break;
                 case "2":
-                    System.out.println("You picked option 2");
+                    view.print("You picked option 2");
                     break;
                 case "3":
-                    System.out.println("Closed correctly.");
+                    view.print("Closed correctly.");
                     wantToExit = true;
                     break;
                 }
@@ -68,16 +67,15 @@ public class Controller {
 
     public void startGame() throws InterruptedException {
 
-        System.out.println(deck.get(7));
         View view = new View();
         String typeOfGame = "";
 
         do {
-        view.displayTypeOfGame();
-        view.displayMessage(view.validateTypeOfGameSelection(typeOfGame));
-        Game game = new Game(deck);
-        typeOfGame = view.getInput("Type of game: ");
-        game.createPlayers(typeOfGame);
+            view.displayTypeOfGame();
+            view.displayMessage(view.validateTypeOfGameSelection(typeOfGame));
+            Game game = new Game(deck);
+            typeOfGame = view.getInput("Type of game: ");
+            game.createPlayers(typeOfGame);
         } while (view.validateTypeOfGameSelection(typeOfGame));
     }
 
