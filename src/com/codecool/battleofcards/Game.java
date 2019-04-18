@@ -51,7 +51,6 @@ class Game {
             dealCards(deck);
             playGame();
         case "4":
-            // Main.getController().runGame();
             break;
         }
     }
@@ -121,13 +120,11 @@ class Game {
     private void playRound(Player activePlayer, Player secondPlayer) throws InterruptedException, NullPointerException {
 
         moveCardsOnTable(activePlayer, secondPlayer);
-        View printer = new View();
+        view.clearScreen();
+        view.print(activePlayer.getName() + "\'s move\n");
         CardsPrinter cardprinter = new CardsPrinter(parseCardForPrint(activePlayer.getCard()));
-        printer.clearScreen();
-        printer.print(activePlayer.getName() + "\'s move\n");
         cardprinter.prepareToPrint();
-        String str = cardprinter.getOutput();
-        printer.print(str);
+        view.print(cardprinter.getOutput());
         int stat = activePlayer.chooseStatToPlay();
         int didIWin = isYourCardStronger(table.get(table.size() - 2), table.get(table.size() - 1), stat);
         
@@ -138,10 +135,10 @@ class Game {
             }
             flip = false;
             table.clear();
-            printer.print("\n" + activePlayer.getName() + " won this round!");
+            view.print("\n" + activePlayer.getName() + " won this round!");
             TimeUnit.SECONDS.sleep(1);
         } else if (didIWin == 2) {
-            printer.print("\nIt's a draw!");
+            view.print("\nIt's a draw!");
             TimeUnit.SECONDS.sleep(1);
             flip = false;
         } else {
@@ -150,7 +147,7 @@ class Game {
             }
             flip = true;
             table.clear();
-            printer.print("\n" + secondPlayer.getName() + " won this round!");
+            view.print("\n" + secondPlayer.getName() + " won this round!");
             TimeUnit.SECONDS.sleep(1);
         }
     }

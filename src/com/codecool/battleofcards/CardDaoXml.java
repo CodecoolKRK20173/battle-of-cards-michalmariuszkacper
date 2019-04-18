@@ -1,13 +1,10 @@
 package com.codecool.battleofcards;
 
-import java.util.List;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 import org.w3c.dom.Attr;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.*;
 
 public class CardDaoXml implements CardDAO<Card> {
@@ -30,25 +27,18 @@ public class CardDaoXml implements CardDAO<Card> {
             Element eElement = (Element) nNode;
             Attr atr = eElement.getAttributeNode("planeName");
             String name = atr.getValue();
-            // String id = eElement.getAttribute("id");
             Node evals = eElement.getElementsByTagName("Evals").item(0);
             NodeList abilities = ((Element) evals).getElementsByTagName("Eval");
             ArrayList<Integer> listOfAbilityValues = new ArrayList<>();
 
             for (int j = 0; j < abilities.getLength(); j++) {
-                // String typeOfAbility = ((Element) abilities.item(j).getAttribute("id"));
-                // String valueOfAbilityStr = ((Element) abilities.item(j).getTextContent());
                 String valueOfAbilityStr = ((Element) abilities.item(j)).getTextContent();
                 int valueOfAbility = Integer.parseInt(valueOfAbilityStr);
                 listOfAbilityValues.add(valueOfAbility);
             }
             Card card = new Card(name, listOfAbilityValues);
             deck.add(card);
-
         }
-
         return deck;
-
     }
-
 }

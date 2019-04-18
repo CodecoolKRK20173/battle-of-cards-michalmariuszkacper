@@ -2,7 +2,6 @@ package com.codecool.battleofcards;
 
 import java.util.ArrayList;
 import java.util.List;
-// import battleOfCards.CardDaoXml;
 
 public class Pile {
 
@@ -19,7 +18,7 @@ public class Pile {
     }
 
     public Card getTopCard() {
-        
+
         return hand.get(hand.size() - 1);
     }
 

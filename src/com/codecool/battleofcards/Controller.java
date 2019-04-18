@@ -9,9 +9,6 @@ public class Controller {
 
     private CardDaoXml cardDaoXml = new CardDaoXml();
     private List<Card> deck;
-    private Player player1;
-    private Player player2;
-    private int playersNumber = 2;
 
     public Controller() {
 
@@ -45,7 +42,6 @@ public class Controller {
                     startGame();
                     break;
                 case "2":
-                    //view.print("You picked option 2");
                     Game game = new Game(deck);
                     game.printCards();
                     break;

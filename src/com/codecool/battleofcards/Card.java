@@ -1,6 +1,7 @@
 package com.codecool.battleofcards;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
 
 class Card {
 
@@ -9,7 +10,6 @@ class Card {
     private Integer secondStat;
     private Integer thirdStat;
     private Integer fourthStat;
-    // private ArrayList<Integer> abilities = new ArrayList<>();
 
     public Card(String name, ArrayList<Integer> abilities) {
 
@@ -19,14 +19,6 @@ class Card {
         this.thirdStat = abilities.get(2);
         this.fourthStat = abilities.get(3);
 
-    }
-
-    public Card(String name, int firstStat, int secondStat, int thirdStat, int fourthStat) {
-        this.name = name;
-        this.firstStat = firstStat;
-        this.secondStat = secondStat;
-        this.thirdStat = thirdStat;
-        this.fourthStat = fourthStat;
     }
 
     public String getName() {
